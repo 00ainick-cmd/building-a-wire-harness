@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACE HANGAR ACCESS - Practice Test</title>
+<title>Wire Harness Training - Practice Test</title>
 <style>
 /* === GLOBAL STYLES === */
 :root {
@@ -951,87 +951,87 @@ function q(prompt, answer, tags) {
   return { id: crypto.randomUUID(), prompt, answer, tags };
 }
 
-// Your test questions
-// Your test questions
-// Your test questions
+// Wire Harness Training Questions
+// Wire Harness Training Questions
+// Wire Harness Training Questions
 const CATEGORIES = [
-  { id:'ohms_law', name:'Ohm\'s Law (V=IR)', icon:'⚡', iconColor:'#ffff00',
+  { id:'wire_basics', name:'Wire Basics & Types', icon:'🔌', iconColor:'#ffff00',
     items:[
-      q('What is the formula for Ohm\'s Law?', 'Voltage (V) = Current (I) * Resistance (R)', ['Ohm\'s Law', 'Formula']),
-      q('What unit is Voltage (V) measured in?', 'Volts (V)', ['Ohm\'s Law', 'Units']),
-      q('What unit is Current (I) measured in?', 'Amperes or Amps (A)', ['Ohm\'s Law', 'Units']),
-      q('What unit is Resistance (R) measured in?', 'Ohms (Ω)', ['Ohm\'s Law', 'Units']),
-      q('A 28V circuit has 14Ω of resistance. How much current flows?', '2 Amps (I = V/R = 28V / 14Ω)', ['Ohm\'s Law', 'Calculation']),
-      q('A circuit has 5A of current flowing through a 4Ω resistor. What is the voltage drop?', '20 Volts (V = I*R = 5A * 4Ω)', ['Ohm\'s Law', 'Calculation']),
-      q('A 12V light bulb draws 2A. What is its resistance?', '6 Ohms (R = V/I = 12V / 2A)', ['Ohm\'s Law', 'Calculation']),
-      q('What is a "short circuit" in terms of resistance?', 'A path with very low or near-zero resistance (R ≈ 0).', ['Ohm\'s Law', 'Faults']),
-      q('According to Ohm\'s law, what happens to current if resistance in a 28V circuit becomes very low (a short)?', 'Current becomes very high, which should trip a circuit breaker.', ['Ohm\'s Law', 'Faults']),
-      q('What is an "open circuit" in terms of resistance?', 'A path with infinite or extremely high resistance (R = ∞).', ['Ohm\'s Law', 'Faults'])
+      q('What does AWG stand for?', 'American Wire Gauge - a standard for wire diameter.', ['Wire Basics', 'Terminology']),
+      q('In AWG, does a higher number mean thicker or thinner wire?', 'Thinner wire. Higher AWG number = smaller diameter.', ['Wire Basics', 'Standards']),
+      q('What is MIL-W-22759 wire?', 'Military specification wire with high-temperature PTFE or ETFE insulation, commonly used in aircraft.', ['Wire Basics', 'Standards']),
+      q('Why is stranded wire preferred over solid wire in aircraft?', 'Stranded wire is more flexible and resistant to fatigue from vibration.', ['Wire Basics', 'Construction']),
+      q('What is the purpose of tinning copper wire?', 'To improve corrosion resistance and make soldering easier.', ['Wire Basics', 'Materials']),
+      q('What temperature rating does PTFE wire insulation typically have?', '200°C (392°F) or higher.', ['Wire Basics', 'Insulation']),
+      q('What are the common aircraft DC voltages?', '14V and 28V systems.', ['Wire Basics', 'Systems']),
+      q('Why must wire gauge be properly selected?', 'To handle current without excessive voltage drop or overheating, while minimizing weight.', ['Wire Basics', 'Engineering']),
+      q('What is wire derating?', 'Reduction in current-carrying capacity due to high temperature, bundling, or confined spaces.', ['Wire Basics', 'Engineering']),
+      q('What causes voltage drop in wire?', 'Resistance of the conductor, especially in long wire runs or undersized wire.', ['Wire Basics', 'Electrical'])
     ]},
-  { id:'watts_law', name:'Watt\'s Law (P=IV) & Power', icon:'🔥', iconColor:'#ff6347',
+  { id:'crimping', name:'Crimping Techniques', icon:'🔧', iconColor:'#ff6347',
     items:[
-      q('What is the formula for electrical Power (Watt\'s Law)?', 'Power (P) = Voltage (V) * Current (I)', ['Watt\'s Law', 'Formula']),
-      q('What unit is electrical Power (P) measured in?', 'Watts (W)', ['Watt\'s Law', 'Units']),
-      q('A 28V circuit draws 2A. How much power is consumed?', '56 Watts (P = V*I = 28V * 2A)', ['Watt\'s Law', 'Calculation']),
-      q('A 100W light bulb is connected to a 28V bus. How much current does it draw?', 'Approximately 3.57 Amps (I = P/V = 100W / 28V)', ['Watt\'s Law', 'Calculation']),
-      q('A component is rated for 56W and 28V. What is its expected current draw?', '2 Amps (I = P/V = 56W / 28V)', ['Watt\'s Law', 'Calculation']),
-      q('What is the power formula using resistance and current?', 'P = I²R (Power = Current-squared * Resistance)', ['Watt\'s Law', 'Formula']),
-      q('What is the power formula using voltage and resistance?', 'P = V²/R (Power = Voltage-squared / Resistance)', ['Watt\'s Law', 'Formula']),
-      q('A 14Ω resistor has 2A flowing through it. How much power does it dissipate?', '56 Watts (P = I²R = 2² * 14 = 4 * 14)', ['Watt\'s Law', 'Calculation']),
-      q('A 10-Amp circuit breaker is used in a 28V system. What is the maximum power the circuit can handle?', '280 Watts (P = V*I = 28V * 10A)', ['Watt\'s Law', 'Calculation', 'Safety']),
-      q('Why do resistors have a "wattage" rating?', 'It specifies the maximum amount of heat (power) they can safely dissipate before being damaged.', ['Watt\'s Law', 'Components'])
+      q('What is crimping?', 'Mechanically deforming a metal terminal onto a wire conductor to create a gas-tight electrical and mechanical connection.', ['Crimping', 'Definition']),
+      q('Why is crimping preferred over soldering in aircraft?', 'Better resistance to vibration, more reliable, faster, and doesn\'t require heat near sensitive components.', ['Crimping', 'Best Practices']),
+      q('What is a ratcheting crimper?', 'A crimp tool that prevents release until the crimp cycle is completed, ensuring consistent quality.', ['Crimping', 'Tools']),
+      q('What should you inspect after crimping?', 'Proper conductor crimp, insulation crimp, no exposed strands, correct crimp height, and no damage to wire.', ['Crimping', 'Inspection']),
+      q('What is a pull test?', 'A test where tension is applied to verify the crimp is mechanically strong - the wire should break before the crimp pulls off.', ['Crimping', 'Testing']),
+      q('What are the two parts of a crimp terminal?', 'The conductor barrel (crimps on bare wire) and the insulation barrel (crimps on insulated wire for strain relief).', ['Crimping', 'Components']),
+      q('What happens if you under-crimp a terminal?', 'Poor electrical and mechanical connection that may fail or have high resistance.', ['Crimping', 'Defects']),
+      q('What happens if you over-crimp a terminal?', 'Can break wire strands, damage the terminal, or cut through conductor.', ['Crimping', 'Defects']),
+      q('How do you verify proper crimp height?', 'Use a micrometer or go/no-go gauge and compare to manufacturer specifications.', ['Crimping', 'Inspection']),
+      q('What is the purpose of the insulation crimp?', 'Provides strain relief and prevents the wire from pulling out of the terminal.', ['Crimping', 'Purpose'])
     ]},
-  { id:'multimeter', name:'Using a Multimeter (DMM)', icon:'📟', iconColor:'#00ced1',
+  { id:'connectors', name:'Connectors & D-Subs', icon:'🔌', iconColor:'#00ced1',
     items:[
-      q('What is the most critical safety step before measuring resistance?', 'Ensure all electrical power is removed from the circuit or component.', ['Multimeter', 'Safety']),
-      q('How must a multimeter be connected to measure voltage?', 'In parallel (across) the component or power source.', ['Multimeter', 'Voltage']),
-      q('How must a multimeter be connected to measure current?', 'In series (in-line), which requires opening the circuit to insert the meter.', ['Multimeter', 'Current']),
-      q('What happens if you try to measure voltage with the meter in the "Amps" setting?', 'You create a short circuit through the meter, likely blowing the meter\'s internal fuse.', ['Multimeter', 'Safety', 'Faults']),
-      q('A multimeter set to "continuity" beeps and reads near 0 Ω. What does this mean?', 'There is a good, complete path. The wire is not "open".', ['Multimeter', 'Continuity']),
-      q('What does a multimeter reading of "OL" or "I" mean when testing for continuity?', '"Over Load" or "Infinite." It means the circuit is "open" and there is no path.', ['Multimeter', 'Continuity']),
-      q('To measure the current drawn by a light bulb, where do you place the meter?', 'In series: Disconnect one wire from the bulb, connect one meter lead to the wire, and the other lead to the bulb.', ['Multimeter', 'Current']),
-      q('When measuring resistance, why must the component be isolated?', 'To prevent reading the resistance of other components connected in parallel.', ['Multimeter', 'Resistance']),
-      q('What meter setting is used to check for a short to ground?', 'Continuity or Resistance, checking from the wire/pin to the aircraft airframe (ground).', ['Multimeter', 'Troubleshooting']),
-      q('What does "Auto-ranging" mean on a multimeter?', 'The meter automatically selects the correct measurement range (e.g., V, mV, kΩ) for the best accuracy.', ['Multimeter', 'Features'])
+      q('What does D-Sub mean?', 'D-subminiature - a connector with a D-shaped metal shell to prevent incorrect orientation.', ['Connectors', 'Terminology']),
+      q('What are common D-sub sizes?', 'DB9 (9 pins), DB15 (15 pins), DB25 (25 pins), DB37 (37 pins).', ['Connectors', 'Types']),
+      q('What is a circular connector?', 'Round connector with threaded coupling, meeting MIL-DTL-38999 or MS specs, providing superior vibration resistance.', ['Connectors', 'Types']),
+      q('What is the difference between pin and socket contacts?', 'Pins are male (solid cylinders), sockets are female (spring fingers that grip). Sockets go on live/powered side.', ['Connectors', 'Components']),
+      q('What is a backshell?', 'Protective housing on connector rear providing strain relief, environmental sealing, and EMI shielding.', ['Connectors', 'Components']),
+      q('What tool is used to insert contacts into a connector?', 'Contact insertion tool - pushes contacts until they lock with proper retention.', ['Connectors', 'Tools']),
+      q('What is depinning?', 'Extracting contacts from a connector insert using a pin extraction tool for rework or repair.', ['Connectors', 'Techniques']),
+      q('How does a pin extraction tool work?', 'It releases the retention fingers/clips holding the contact, allowing it to be removed from the rear.', ['Connectors', 'Tools']),
+      q('Why must you be careful when depinning?', 'To avoid damaging the contact retention features or bending the contact pins.', ['Connectors', 'Best Practices']),
+      q('Where are pin numbers typically marked on a connector?', 'Stamped or molded into the connector insert face.', ['Connectors', 'Identification'])
     ]},
-  { id:'series_circuits', name:'Series Circuits', icon:'⛓️', iconColor:'#32cd32',
+  { id:'soldering', name:'Soldering Techniques', icon:'🔥', iconColor:'#32cd32',
     items:[
-      q('What is the rule for total resistance (R_T) in a series circuit?', 'Total resistance is the sum of all individual resistances (R_T = R1 + R2 + R3...).', ['Series', 'Formula']),
-      q('What is the rule for current (I) in a series circuit?', 'Current is the same through all components in the circuit.', ['Series', 'Principles']),
-      q('Three resistors (5Ω, 10Ω, 15Ω) are in series. What is the total resistance?', '30 Ohms (5 + 10 + 15)', ['Series', 'Calculation']),
-      q('What happens to the total current in a series circuit if one component "opens"?', 'The current drops to zero for the entire circuit.', ['Series', 'Troubleshooting', 'Faults']),
-      q('What is the rule for total voltage in a series circuit?', 'The total voltage from the source is divided among the components (it adds up).', ['Series', 'Principles', 'KVL']),
-      q('A 28V source powers two 7Ω resistors in series. What is the current?', '2 Amps (R_T = 7+7=14Ω; I = 28V/14Ω = 2A)', ['Series', 'Calculation']),
-      q('In a series circuit, which resistor drops the most voltage?', 'The resistor with the highest resistance value.', ['Series', 'Principles']),
-      q('Two 10Ω resistors are in series with a 20V source. What is the voltage drop across *one* of them?', '10 Volts (R_T = 20Ω; I = 1A; V_drop = 1A * 10Ω = 10V)', ['Series', 'Calculation']),
-      q('What is a "voltage divider"?', 'A series circuit used to produce a lower voltage at the junction between components.', ['Series', 'Components']),
-      q('What happens to total resistance in a series circuit if you add another resistor?', 'Total resistance increases.', ['Series', 'Principles'])
+      q('What is soldering?', 'Joining electrical connections using molten solder (tin-lead or lead-free) at ~700°F to create electrical and mechanical bond.', ['Soldering', 'Definition']),
+      q('What is rosin core solder?', 'Solder wire with flux (rosin) embedded in core that cleans oxidation and promotes wetting. Standard for electronics.', ['Soldering', 'Materials']),
+      q('Why should you never use acid flux on electronics?', 'Acid flux is corrosive and will damage electronic components and circuit boards.', ['Soldering', 'Safety']),
+      q('What temperature should a soldering iron be for electronics work?', 'Typically 650-750°F (343-399°C), depending on the solder type and component.', ['Soldering', 'Technique']),
+      q('What does a good solder joint look like?', 'Shiny appearance, smooth concave fillet, complete wetting, proper solder amount - like a shiny mountain.', ['Soldering', 'Quality']),
+      q('What is a cold solder joint?', 'Defective joint from insufficient heat or movement during cooling - appears dull, grainy, or crystalline.', ['Soldering', 'Defects']),
+      q('What causes a cold solder joint?', 'Insufficient heat, movement during cooling, contaminated surfaces, or wrong solder temperature.', ['Soldering', 'Defects']),
+      q('How long should you apply heat when soldering?', '2-3 seconds typically - just long enough for solder to flow and wet the surfaces properly.', ['Soldering', 'Technique']),
+      q('What is the proper technique for heating a joint?', 'Heat the component/wire first, then apply solder to the heated joint (not the iron tip).', ['Soldering', 'Technique']),
+      q('How do you desolder a connection?', 'Heat the joint while using desoldering braid or vacuum pump to remove molten solder.', ['Soldering', 'Rework'])
     ]},
-  { id:'parallel_circuits', name:'Parallel Circuits', icon:'📊', iconColor:'#ffa500',
+  { id:'wire_prep', name:'Wire Stripping & Preparation', icon:'✂️', iconColor:'#ffa500',
     items:[
-      q('What is the rule for voltage in a parallel circuit?', 'Voltage is the same across all components (branches) in the circuit.', ['Parallel', 'Principles']),
-      q('What is the rule for total current (I_T) in a parallel circuit?', 'Total current is the sum of the currents in all the individual branches (I_T = I1 + I2 + ...).', ['Parallel', 'Formula', 'KCL']),
-      q('What happens to total resistance in a parallel circuit if you add another branch?', 'Total resistance *decreases*.', ['Parallel', 'Principles']),
-      q('Two 10Ω resistors are in parallel. What is the total resistance (R_T)?', '5 Ohms (R_T = (R1*R2)/(R1+R2) or 1/(1/10 + 1/10))', ['Parallel', 'Calculation']),
-      q('If one branch of a parallel circuit "opens," what happens to the other branches?', 'They are unaffected and continue to operate normally.', ['Parallel', 'Troubleshooting', 'Faults']),
-      q('Two 10A lights are wired in parallel to a 28V bus. What is the total current drawn?', '20 Amps (10A + 10A)', ['Parallel', 'Calculation']),
-      q('What happens to total current if one branch in a parallel circuit "shorts"?', 'Total current becomes extremely high as the shorted branch draws almost all current, tripping the breaker.', ['Parallel', 'Troubleshooting', 'Faults']),
-      q('The total resistance in a parallel circuit is always...', '...less than the smallest individual branch resistance.', ['Parallel', 'Principles']),
-      q('Why are most aircraft components (lights, LRUs) wired in parallel?', 'So that if one component fails (opens), the others continue to receive power.', ['Parallel', 'Application']),
-      q('Three 30Ω resistors are in parallel. What is the total resistance?', '10 Ohms (For equal resistors, R_T = R / N = 30Ω / 3)', ['Parallel', 'Calculation'])
+      q('What is wire stripping?', 'Removal of insulation from wire end to expose conductor for termination, without damaging strands.', ['Wire Prep', 'Definition']),
+      q('What is an automatic wire stripper?', 'Tool that auto-adjusts blade depth based on wire size, removing insulation without damaging conductors.', ['Wire Prep', 'Tools']),
+      q('What is strip length?', 'The specific length of insulation to remove, determined by the terminal being used (typically 0.125" to 0.25").', ['Wire Prep', 'Specifications']),
+      q('Why is proper strip length critical?', 'Too short won\'t make good connection; too long leaves exposed conductor that can short.', ['Wire Prep', 'Quality']),
+      q('What happens if you nick conductor strands while stripping?', 'Weakens the wire mechanically and electrically, can lead to failure.', ['Wire Prep', 'Defects']),
+      q('How do you verify you haven\'t damaged conductor strands?', 'Visual inspection under magnification; no broken or nicked strands should be visible.', ['Wire Prep', 'Inspection']),
+      q('What is heat shrink tubing used for?', 'Provides insulation, strain relief, and environmental protection for splices and connections.', ['Wire Prep', 'Materials']),
+      q('What is a service loop?', 'Extra wire length (3-6") left in harness to allow for movement, maintenance access, or future modifications.', ['Wire Prep', 'Best Practices']),
+      q('What is wire bundling?', 'Grouping wires together and securing with lacing cord or cable ties to form organized harness.', ['Wire Prep', 'Assembly']),
+      q('What is chafing and how do you prevent it?', 'Wire insulation wear from rubbing. Prevented by proper routing, grommets, cushioning, and avoiding sharp edges.', ['Wire Prep', 'Problems'])
     ]},
-  { id:'kirchhoff_faults', name:'Kirchhoff\'s Laws & Fault Diagnosis', icon:'🔎', iconColor:'#b22222',
+  { id:'wiring_diagrams', name:'Wiring Diagrams & Standards', icon:'📋', iconColor:'#b22222',
     items:[
-      q('What does Kirchhoff\'s Voltage Law (KVL) state?', 'The sum of all voltage drops around any closed loop must equal the source voltage.', ['Kirchhoff\'s Laws', 'KVL', 'Formula']),
-      q('What does Kirchhoff\'s Current Law (KCL) state?', 'The total current entering a junction or node must equal the total current leaving it.', ['Kirchhoff\'s Laws', 'KCL', 'Formula']),
-      q('A wire\'s conductor is touching the airframe. What is this fault called?', 'A "short circuit to ground," which will cause excessive current.', ['Troubleshooting', 'Faults']),
-      q('A wire is broken and no current can flow. What is this fault called?', 'An "open circuit," which has infinite resistance.', ['Troubleshooting', 'Faults']),
-      q('A corroded connector pin causes an unexpected voltage drop. What is this fault?', 'A "high-resistance" fault, which reduces current and adds heat.', ['Troubleshooting', 'Faults']),
-      q('KVL is the principle behind how what type of circuit works?', 'A series circuit, where the voltage drops add up to the source voltage.', ['Kirchhoff\'s Laws', 'KVL', 'Series']),
-      q('KCL is the principle behind how what type of circuit works?', 'A parallel circuit, where the branch currents add up to the total current.', ['Kirchhoff\'s Laws', 'KCL', 'Parallel']),
-      q('A technician reads 28V at the circuit breaker but 0V at the LRU. What is the most likely fault?', 'An "open circuit" in the wiring between the breaker and the LRU.', ['Troubleshooting', 'Faults', 'Open Circuit']),
-      q('A 5A breaker trips immediately when the avionics master is turned on. What is the most likely fault?', 'A "short circuit" in that component or its wiring.', ['Troubleshooting', 'Faults', 'Short Circuit']),
-      q('A junction has 5A coming in, 2A going to one light, and 3A going to another. This demonstrates what law?', 'Kirchhoff\'s Current Law (KCL), where 5A_in = 2A_out + 3A_out.', ['Kirchhoff\'s Laws', 'KCL', 'Calculation'])
+      q('What is a wiring diagram?', 'Schematic showing electrical connections, wire routing, connector pinouts, and component locations in aircraft system.', ['Documentation', 'Definition']),
+      q('What is wire identification?', 'Marking system using numbers, letters, or colors to uniquely identify each wire by circuit function, gauge, and sequence.', ['Documentation', 'Standards']),
+      q('What is a pin number?', 'Unique identifier for each contact position in a connector, stamped or molded into connector insert.', ['Documentation', 'Connectors']),
+      q('What is AC 43.13-1B?', 'FAA Advisory Circular providing acceptable methods for aircraft inspection, repair, and alteration. Chapter 11 covers wiring.', ['Standards', 'Regulations']),
+      q('What is IPC/WHMA-A-620?', 'Industry standard for requirements and acceptance criteria for cable and wire harness assemblies.', ['Standards', 'Quality']),
+      q('What are ESD precautions?', 'Electrostatic discharge protection using grounded wrist straps and anti-static mats to prevent damage to sensitive avionics.', ['Safety', 'ESD']),
+      q('What is FOD prevention?', 'Foreign Object Debris prevention - ensuring no wire clippings, pins, or tools are left in aircraft.', ['Safety', 'FOD']),
+      q('What is a continuity test?', 'Using multimeter to verify electrical path is complete and has low resistance after harness assembly.', ['Testing', 'Verification']),
+      q('What is an insulation resistance test?', 'High-voltage test (500V-1000V) to verify insulation integrity between conductors and to ground.', ['Testing', 'Quality']),
+      q('What is lacing cord?', 'Waxed or unwaxed cord used to tie and secure wire bundles in aircraft using specific knot patterns.', ['Assembly', 'Traditional'])
     ]}
 ];
 // Motivational messages array

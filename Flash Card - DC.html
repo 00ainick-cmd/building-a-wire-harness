@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> CAET Flash Cards – Standalone </title>
+  <title> Wire Harness Flash Cards – Standalone </title>
   <style>
     :root{
       --bg: #f8fafc; /* slate-50 */
@@ -90,7 +90,7 @@
         <svg class="sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M12 2l1.9 4.6L18 8l-4.1 1.4L12 14l-1.9-4.6L6 8l4.1-1.4L12 2z"/>
         </svg>
-        AEA Interactive Glossary
+        Wire Harness Interactive Glossary
       </h1>
       <div class="deck-switch" id="deckSwitch">
         <button class="chip active" data-deck="all">All</button>
@@ -146,216 +146,335 @@
 (function(){
   // ---------- Data (embedded directly – no document.write) ----------
   const FIXED_CARDS = [
-  
+
   {
-    "term": "Voltage (V)",
-    "definition": "The electrical pressure or potential difference that causes electrons to flow, often symbolized as E (electromotive force) or V, and is measured in Volts (V) [4-6]. In aircraft, standard DC voltages are typically 14V or 28V [3, 4, 7, 8].",
-    "analogy": "The height of a waterfall or the water pressure in a hose [4-6, 9].",
-    "unit": "Volt (V)",
-    "tags": "DC 101|fundamentals|measurement"
+    "term": "AWG (American Wire Gauge)",
+    "definition": "A standardized wire gauge system used in North America to specify the diameter of round electrical wire. The gauge number is inversely proportional to diameter - larger numbers mean smaller wire diameter. Common avionics sizes include 20 AWG, 22 AWG, and 24 AWG.",
+    "analogy": "Like clothing sizes, but backwards - the higher the number, the thinner the wire.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|fundamentals|standards"
   },
   {
-    "term": "Current (I)",
-    "definition": "The flow rate of electrons (electrical charge) through a conductor, measured in Amperes (A) [7, 9-11]. Controlling current is essential for safe avionics operation [12].",
-    "analogy": "The flow rate or amount of water moving through a pipe or hose [9, 10, 13].",
-    "unit": "Ampere (A)",
-    "tags": "DC 101|fundamentals|measurement"
+    "term": "MIL-W-22759 Wire",
+    "definition": "Military specification wire commonly used in aircraft. Features PTFE or ETFE insulation rated for high temperature (200°C) and excellent chemical resistance. Available in various conductor sizes and insulation colors for circuit identification.",
+    "analogy": "The gold standard wire for aircraft - tough, heat-resistant, and reliable in harsh environments.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|materials|standards"
   },
   {
-    "term": "Resistance (R)",
-    "definition": "The opposition or 'friction' to electron flow through a material, measured in Ohms ($\\Omega$) [9, 13-15]. Resistance is used to control current and protect sensitive avionics components [12, 16].",
-    "analogy": "Rocks in a riverbed that impede water flow, or the diameter of a hose (smaller hose = higher resistance) [9, 13, 14].",
-    "unit": "Ohm ($\\Omega$)",
-    "tags": "DC 101|fundamentals|measurement"
+    "term": "Stranded Wire",
+    "definition": "Wire constructed from multiple thin strands of conductor twisted together, providing flexibility and resistance to fatigue from vibration. Preferred for aircraft applications over solid wire due to superior flex life.",
+    "analogy": "Like a rope made of many fibers - flexible and less likely to break from repeated bending.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|construction"
   },
   {
-    "term": "Ohm’s Law (V=I×R)",
-    "definition": "The fundamental mathematical relationship describing voltage, current, and resistance: Voltage equals Current multiplied by Resistance (V = I × R) [2, 10, 12, 17, 18]. This is the most important tool for troubleshooting electrical issues [12, 19].",
-    "analogy": "The backbone of every electrical problem solved in a small aircraft [19].",
-    "unit": "DC 102 (Formula)",
-    "tags": "formula|troubleshooting"
+    "term": "Tinned Copper Conductor",
+    "definition": "Copper wire strands that have been coated with a thin layer of solder (tin-lead alloy). Provides improved corrosion resistance and makes soldering easier. Standard for avionics applications.",
+    "analogy": "Copper wire with a protective rain jacket that also makes it easier to work with.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|materials|corrosion"
   },
   {
-    "term": "Ohm’s Law Triangle",
-    "definition": "A visual memory aid used by technicians where V is placed at the top, and I and R are at the base; covering the desired variable reveals the correct formula [20, 21].",
-    "analogy": "A fast, foolproof method to recall the three core electrical relationships [20].",
-    "unit": "DC 102 (Tool)",
-    "tags": "formula|tool"
+    "term": "PTFE Insulation",
+    "definition": "Polytetrafluoroethylene (Teflon) insulation used on aircraft wire. Provides excellent heat resistance (200°C+), chemical resistance, and low moisture absorption. Standard for high-reliability avionics applications.",
+    "analogy": "The same non-stick material as cooking pans, protecting wire in extreme conditions.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|materials|insulation"
   },
   {
-    "term": "Ohm's Law (Current Formula)",
-    "definition": "A derived formula stating that Current equals Voltage divided by Resistance (I = V $\\div$ R) [10, 17, 22]. This is used to calculate the electrical load to select proper circuit protection [23].",
-    "analogy": "Finding the flow rate when you know the pressure and the size of the restriction [17].",
-    "unit": "DC 102 (Formula)",
-    "tags": "formula|troubleshooting"
+    "term": "Wire Bundle",
+    "definition": "Multiple wires grouped together and secured with lacing cord or cable ties to form an organized harness. Proper bundling prevents chafing, supports wires, and maintains organization throughout the aircraft.",
+    "analogy": "Like organizing cables behind your computer desk, but with strict rules and standards.",
+    "unit": "Harness Assembly",
+    "tags": "assembly|organization"
   },
   {
-    "term": "Ohm's Law (Resistance Formula)",
-    "definition": "A derived formula stating that Resistance equals Voltage divided by Current (R = V $\\div$ I) [14, 17, 22]. This is used to determine the resistance of components like light bulbs or heating elements [14, 20].",
-    "analogy": "Finding the size of the obstruction when you know the pressure and the flow rate [17].",
-    "unit": "DC 102 (Formula)",
-    "tags": "formula|troubleshooting"
+    "term": "Service Loop",
+    "definition": "Extra length of wire intentionally left in a harness to allow for movement, maintenance access, or future modifications. Typically 3-6 inches depending on location and application.",
+    "analogy": "Slack in a phone cord that lets you move around while talking.",
+    "unit": "Harness Assembly",
+    "tags": "assembly|best_practices"
   },
   {
-    "term": "Electrical Power (P)",
-    "definition": "The rate of doing work or consuming energy in a circuit, calculated primarily using P = V $\\times$ I [24-27]. Power calculations are critical for proper wire sizing and circuit breaker selection [2, 25, 28, 29].",
-    "analogy": "The volume or amount of work being produced, or the energy consumed by a device [24, 30, 31].",
-    "unit": "Watt (W)",
-    "tags": "DC 102|calculations|safety"
+    "term": "Crimping",
+    "definition": "The process of mechanically deforming a metal terminal or contact onto a wire conductor to create a gas-tight electrical and mechanical connection. Preferred over soldering for aircraft applications due to reliability and resistance to vibration.",
+    "analogy": "Like squeezing a metal sleeve onto a wire so tightly that it becomes a permanent connection.",
+    "unit": "Crimping",
+    "tags": "crimping|fundamentals|techniques"
   },
   {
-    "term": "Watt's Law (Derived)",
-    "definition": "Alternative formulas derived from Ohm's Law and Power, such as P = I² $\\times$ R and P = V² $\\div$ R, useful when current or voltage measurements are difficult to obtain [25, 26, 32, 33].",
-    "analogy": "Alternative routes to calculate the work being done if you can't measure all the basic variables [32].",
-    "unit": "DC 102 (Formula)",
-    "tags": "formula|calculations"
+    "term": "Ratcheting Crimper",
+    "definition": "A crimp tool with a ratchet mechanism that prevents release until the crimp cycle is completed, ensuring consistent crimp quality. Essential for reliable, repeatable crimps in aircraft wiring.",
+    "analogy": "A tool that won't let you do a half-job - it forces you to complete the crimp properly.",
+    "unit": "Tools",
+    "tags": "tools|crimping|quality"
   },
   {
-    "term": "Conductor",
-    "definition": "Materials, typically metals like copper or aluminum, that allow electricity to flow easily because they have many free valence electrons and low resistance [14, 15, 34, 35].",
-    "analogy": "A clear, wide highway for the smooth flow of electrical current [34].",
-    "unit": "DC 101 (Material)",
-    "tags": "fundamentals|materials"
+    "term": "Crimp Inspection",
+    "definition": "Visual and dimensional examination of a crimped connection to verify proper conductor crimp, insulation crimp, no wire strands outside the barrel, and correct crimp height per manufacturer specifications.",
+    "analogy": "Quality control checkpoint to ensure the connection will last the life of the aircraft.",
+    "unit": "Crimping",
+    "tags": "crimping|inspection|quality"
   },
   {
-    "term": "Insulator",
-    "definition": "Materials, such as rubber or plastic, that block or highly resist the flow of electricity, used in avionics for wire jackets and safety barriers [14, 34, 36].",
-    "analogy": "A physical barrier or safety fence confining the electrical current to its intended path [34, 37].",
-    "unit": "DC 101 (Material)",
-    "tags": "fundamentals|materials"
+    "term": "Pull Test",
+    "definition": "A destructive or non-destructive test where tension is applied to a crimped connection to verify mechanical strength. The wire should break before the crimp pulls off, or meet minimum pull force requirements.",
+    "analogy": "Tugging on the crimp to make sure it won't come apart in service.",
+    "unit": "Crimping",
+    "tags": "crimping|testing|quality"
   },
   {
-    "term": "Semiconductor",
-    "definition": "Materials, like silicon, with electrical properties between conductors and insulators, used in modern solid-state electronics like transistors and diodes where conductivity can be controlled [14, 34, 37, 38].",
-    "analogy": "The basis of all modern electronic components that can act as a controlled switch [34].",
-    "unit": "DC 101 (Material)",
-    "tags": "fundamentals|materials|devices"
+    "term": "D-Sub Connector",
+    "definition": "D-subminiature connector with a D-shaped metal shell containing pins (male) or sockets (female) in rows. Common types include DB9 (9 pins), DB15 (15 pins), DB25 (25 pins), and DB37 (37 pins). Widely used in avionics for serial data and discrete signals.",
+    "analogy": "The classic computer-style connector with a D-shaped shell to prevent wrong-way insertion.",
+    "unit": "Connectors",
+    "tags": "connectors|d-sub|types"
   },
   {
-    "term": "Electron",
-    "definition": "Tiny negatively charged particles orbiting the atom's nucleus [39, 40]. The directed movement of valence electrons from atom to atom creates electrical current [41, 42].",
-    "analogy": "The moving charge carriers that make up electricity [41].",
-    "unit": "DC 101 (Physics)",
-    "tags": "atomic_theory"
+    "term": "Circular Connector",
+    "definition": "Round connectors with threaded coupling mechanism, commonly meeting MIL-DTL-38999 or MS specifications. Provide superior vibration resistance and environmental sealing compared to rectangular connectors. Standard for aircraft applications.",
+    "analogy": "The heavy-duty screw-together connectors you see on aircraft equipment.",
+    "unit": "Connectors",
+    "tags": "connectors|circular|types"
   },
   {
-    "term": "Proton",
-    "definition": "Positively charged particle located within the nucleus of an atom [39, 40]. Protons contribute to the mass and stability of the atom [42].",
-    "analogy": "A fundamental positive charge at the core of matter [39].",
-    "unit": "DC 101 (Physics)",
-    "tags": "atomic_theory"
+    "term": "Pin vs Socket Contacts",
+    "definition": "Pin (male) contacts are solid cylindrical conductors that insert into socket (female) contacts which have spring fingers that grip the pin. Sockets are typically installed on the 'live' or powered side for safety.",
+    "analogy": "Like a plug and socket - one goes in, one receives.",
+    "unit": "Connectors",
+    "tags": "connectors|contacts|fundamentals"
   },
   {
-    "term": "Series Circuit",
-    "definition": "A configuration where components are connected end-to-end in a single, unbroken path [2, 43-46]. The same current flows through all components [43, 44, 46-48].",
-    "analogy": "A single chain of components; one failure stops the entire circuit [43, 46, 49].",
-    "unit": "DC 103 (Circuit Type)",
-    "tags": "circuit_type"
+    "term": "Backshell",
+    "definition": "A protective housing attached to the rear of a connector that provides strain relief for the wire bundle, environmental sealing, and EMI shielding. Essential for professional aircraft installations.",
+    "analogy": "The cable grommet that protects wires where they enter the connector body.",
+    "unit": "Connectors",
+    "tags": "connectors|assembly|protection"
   },
   {
-    "term": "Parallel Circuit",
-    "definition": "A configuration where components are connected across common voltage points, offering multiple independent current paths [2, 50-53]. The voltage is the same across all branches [53-56].",
-    "analogy": "Modern household wiring or aircraft distribution where turning off one device doesn't affect others [54, 57, 58].",
-    "unit": "DC 103 (Circuit Type)",
-    "tags": "circuit_type"
+    "term": "Contact Insertion Tool",
+    "definition": "A specialized tool used to properly seat pins or sockets into a connector insert. Ensures contacts lock into place with proper retention and alignment. Required for professional connector assembly.",
+    "analogy": "Like a plunger that pushes contacts into their holes until they click and lock.",
+    "unit": "Tools",
+    "tags": "tools|connectors|assembly"
   },
   {
-    "term": "Complex Circuit",
-    "definition": "A combination of both series and parallel elements, common in avionics installations where safety and independent operation are required [2, 53-55].",
-    "analogy": "Wiring the power wire on multiple components in parallel, which then runs in series to a circuit breaker [54].",
-    "unit": "DC 103 (Circuit Type)",
-    "tags": "circuit_type"
+    "term": "Depinning (Pin Removal)",
+    "definition": "The process of extracting contacts from a connector insert using a pin extraction tool. Required for rework, repair, or modification of connectors. Must be done carefully to avoid damage to contact retention features.",
+    "analogy": "Like using the right key to unlock and remove a contact from its position.",
+    "unit": "Connectors",
+    "tags": "connectors|depinning|rework"
   },
   {
-    "term": "Kirchhoff's Voltage Law (KVL)",
-    "definition": "States that the sum of all voltage drops around any closed loop in a circuit must equal the total supply voltage (or sum to zero) [2, 43, 59-61]. Essential for ensuring components receive correct voltage [62].",
-    "analogy": "The source voltage must be entirely consumed by the components in the loop [63].",
-    "unit": "DC 103 (Law)",
-    "tags": "law|series|troubleshooting"
+    "term": "Pin Extraction Tool",
+    "definition": "A thin, precisely sized tool (often a metal tube or fork) that releases the retention fingers or clips holding a contact in a connector insert, allowing the contact to be removed from the rear.",
+    "analogy": "The special tool that presses the release tabs to let the contact slide out.",
+    "unit": "Tools",
+    "tags": "tools|depinning|connectors"
   },
   {
-    "term": "Kirchhoff's Current Law (KCL)",
-    "definition": "States that the total current entering a junction must equal the total current leaving the junction [2, 54, 64-66]. This ensures current is properly distributed across all parallel branches [67].",
-    "analogy": "A rule ensuring no current is lost or created at a junction point where wires meet [67].",
-    "unit": "DC 103 (Law)",
-    "tags": "law|parallel|troubleshooting"
+    "term": "Wire Stripping",
+    "definition": "The removal of insulation from the end of a wire to expose the conductor for termination. Must be done without nicking or breaking conductor strands. Strip length must match terminal requirements.",
+    "analogy": "Peeling the plastic jacket off the end of a wire, like removing the wrapper from a straw.",
+    "unit": "Wire Preparation",
+    "tags": "wire_prep|stripping|techniques"
   },
   {
-    "term": "Series Resistance Formula",
-    "definition": "Total resistance in a series circuit is the sum of all individual resistances: R_total = R₁ + R₂ + R₃ + ... [43, 49, 51, 68]. Adding components increases the total resistance [49, 68].",
-    "analogy": "Total friction is the sum of every rough spot the current encounters in its single path [68].",
-    "unit": "DC 103 (Formula)",
-    "tags": "formula|series"
+    "term": "Automatic Wire Stripper",
+    "definition": "A tool that automatically adjusts blade depth based on wire size, removing insulation without damaging conductor strands. Preferred for production work and consistent quality.",
+    "analogy": "A smart tool that knows exactly how deep to cut for each wire size.",
+    "unit": "Tools",
+    "tags": "tools|stripping|automation"
   },
   {
-    "term": "Parallel Resistance Formula",
-    "definition": "Total resistance is the reciprocal of the sum of the individual reciprocals: 1/R_total = 1/R₁ + 1/R₂ + ... [54, 55, 69, 70]. The total resistance is always less than the smallest individual resistor [54, 69, 71].",
-    "analogy": "Adding multiple paths makes it easier for the current to flow, reducing the overall resistance [69].",
-    "unit": "DC 103 (Formula)",
-    "tags": "formula|parallel"
+    "term": "Strip Length",
+    "definition": "The specific length of insulation to be removed from a wire end, determined by the terminal or connector being used. Typically ranges from 0.125\" to 0.25\" for most aircraft terminals. Critical for proper crimp and electrical performance.",
+    "analogy": "Like a recipe measurement - get it right for the best result.",
+    "unit": "Wire Preparation",
+    "tags": "wire_prep|stripping|specifications"
   },
   {
-    "term": "Open Circuit",
-    "definition": "A fault caused by a break or disconnection in the current path, resulting in infinite resistance (O.L.) and zero current flow (0 Amps) [2, 72-74].",
-    "analogy": "A dammed river or a broken wire; the current stops completely [72, 75].",
-    "unit": "DC 103 (Fault)",
-    "tags": "fault|troubleshooting"
+    "term": "Soldering",
+    "definition": "The process of joining electrical connections using molten solder (typically 60/40 tin-lead or lead-free) at temperatures around 700°F. Creates both electrical and mechanical bond. Requires proper heat, time, and flux.",
+    "analogy": "Like welding, but at lower temperature, to fuse metal connections together.",
+    "unit": "Soldering",
+    "tags": "soldering|fundamentals|techniques"
   },
   {
-    "term": "Short Circuit",
-    "definition": "A dangerous fault where current takes an unintended low-resistance path, causing excessive current flow that can trip circuit protection or cause fires [2, 73, 76, 77].",
-    "analogy": "Electrons taking the least resistive path, such as through a carelessly dropped metal wrench across battery terminals [76].",
-    "unit": "DC 103 (Fault)",
-    "tags": "fault|safety"
+    "term": "Rosin Core Solder",
+    "definition": "Solder wire with flux (rosin) embedded in the core. The flux cleans oxidation and promotes wetting during soldering. Standard type for electronics and avionics applications. Never use acid flux on electronics.",
+    "analogy": "Self-cleaning solder - the flux inside does the prep work as you solder.",
+    "unit": "Soldering",
+    "tags": "soldering|materials|flux"
   },
   {
-    "term": "Voltage Drop",
-    "definition": "The reduction in voltage across a component in a circuit as energy is consumed, calculated using Ohm's Law (V = I $\\times$ R) [2, 47, 63]. High-resistance connections (corrosion) cause unwanted voltage drops [28, 78].",
-    "analogy": "The amount of pressure lost as water passes through a small pipe or filter [6, 62].",
-    "unit": "DC 103 (Concept)",
-    "tags": "troubleshooting"
+    "term": "Solder Joint Inspection",
+    "definition": "Examination of completed solder joint for proper characteristics: shiny appearance, smooth fillet, complete wetting, no cold joints, no solder bridges, and proper solder amount. Critical for reliability.",
+    "analogy": "Checking that your solder joint looks like a perfect shiny mountain, not a dull blob.",
+    "unit": "Soldering",
+    "tags": "soldering|inspection|quality"
   },
   {
-    "term": "Multimeter",
-    "definition": "A handheld test instrument essential for avionics technicians used to measure fundamental electrical quantities: voltage, current, and resistance [2, 59, 79].",
-    "analogy": "The primary diagnostic tool, allowing technicians to interpret electrical system health [59, 80].",
-    "unit": "DC 103 (Tool)",
-    "tags": "tool|measurement"
+    "term": "Cold Solder Joint",
+    "definition": "A defective solder connection caused by insufficient heat, movement during cooling, or contamination. Appears dull, grainy, or crystalline instead of shiny and smooth. Has poor electrical and mechanical properties.",
+    "analogy": "A bad connection that looks rough and dull, like cold butter instead of melted butter.",
+    "unit": "Soldering",
+    "tags": "soldering|defects|troubleshooting"
   },
   {
-    "term": "Measuring Voltage (Procedure)",
-    "definition": "Voltage is measured by connecting the multimeter probes *across* (in parallel with) the component or circuit being tested [2, 6, 7, 51]. This must be done while the circuit is powered ON [81].",
-    "analogy": "Measuring the pressure difference between the inlet and outlet of a device [7].",
-    "unit": "DC 103 (Procedure)",
-    "tags": "multimeter|procedure"
+    "term": "Wiring Diagram",
+    "definition": "A schematic representation showing the electrical connections, wire routing, connector pinouts, and component locations in an aircraft system. Essential reference for harness fabrication, installation, and troubleshooting.",
+    "analogy": "The blueprint or roadmap that shows how everything connects together.",
+    "unit": "Documentation",
+    "tags": "documentation|diagrams|fundamentals"
   },
   {
-    "term": "Measuring Current (Procedure)",
-    "definition": "Current is measured by inserting the multimeter *into* (in series with) the circuit, physically breaking the current path so the flow runs through the meter [2, 13, 51, 82, 83]. This must be done carefully to avoid blowing fuses [2, 84].",
-    "analogy": "Cutting a pipe and routing the entire water flow through a flow meter [83, 84].",
-    "unit": "DC 103 (Procedure)",
-    "tags": "multimeter|procedure"
+    "term": "Wire Identification",
+    "definition": "Marking system using numbers, letters, or color codes to uniquely identify each wire in a harness. Typically includes circuit function, gauge, and sequence number. Essential for maintenance and troubleshooting.",
+    "analogy": "Like name tags on wires so you know which wire does what.",
+    "unit": "Documentation",
+    "tags": "documentation|identification|standards"
   },
   {
-    "term": "Measuring Resistance (Procedure)",
-    "definition": "Resistance is measured by connecting the multimeter probes across the component, but the circuit power must be completely OFF to prevent damage to the meter and ensure accurate results [17, 51, 85].",
-    "analogy": "Checking the impedance of a wire or component when it is completely isolated [85].",
-    "unit": "DC 103 (Procedure)",
-    "tags": "multimeter|procedure"
+    "term": "Pin Number",
+    "definition": "The unique identifier for each contact position in a connector. Allows correlation between wiring diagrams and physical connectors. Usually stamped or molded into connector insert. Critical for correct assembly.",
+    "analogy": "Like apartment numbers - tells you exactly where each wire should go.",
+    "unit": "Connectors",
+    "tags": "connectors|documentation|identification"
   },
   {
-    "term": "Electrostatic Discharge (ESD)",
-    "definition": "The rapid transfer of static electrical charge built up on an object [2, 86]. This poses a serious hazard as it can damage sensitive avionics components like microprocessors [2, 76, 87].",
-    "analogy": "The invisible static shock that can 'fry' delicate circuits [88].",
-    "unit": "DC 101 (Safety)",
-    "tags": "safety|maintenance"
+    "term": "Splice",
+    "definition": "A connection joining two or more wires together in-line. Can be crimped, soldered, or both. Must be properly insulated and supported. Should be avoided when possible, but necessary for repairs and modifications.",
+    "analogy": "Like splicing ropes together to make a longer rope.",
+    "unit": "Wire Connections",
+    "tags": "connections|splicing|techniques"
+  },
+  {
+    "term": "Lacing Cord",
+    "definition": "Waxed or unwaxed cord used to tie and secure wire bundles in aircraft. Applied using specific knot patterns (single or double cord). Traditional method providing excellent support and professional appearance.",
+    "analogy": "Like shoelaces for wire bundles - the old-school professional way to secure wires.",
+    "unit": "Harness Assembly",
+    "tags": "assembly|lacing|traditional"
+  },
+  {
+    "term": "Cable Ties",
+    "definition": "Plastic straps with ratcheting heads used to secure wire bundles. Must not be overtightened (can damage insulation). Should be trimmed flush after installation. Easier than lacing but less traditional.",
+    "analogy": "The modern zip-tie approach to securing wire bundles.",
+    "unit": "Harness Assembly",
+    "tags": "assembly|cable_ties|modern"
+  },
+  {
+    "term": "Chafing",
+    "definition": "Wear or damage to wire insulation caused by rubbing against sharp edges, other wires, or airframe structure. Can lead to short circuits and fires. Prevented by proper routing, grommets, and cushioning.",
+    "analogy": "Like rope burn on wires - friction wearing through the protective covering.",
+    "unit": "Installation Issues",
+    "tags": "installation|problems|prevention"
+  },
+  {
+    "term": "Continuity Test",
+    "definition": "Using a multimeter or continuity tester to verify that an electrical path is complete and has low resistance. Essential test after harness assembly to verify connections before installation.",
+    "analogy": "Checking that electricity can flow from one end to the other without interruption.",
+    "unit": "Testing",
+    "tags": "testing|verification|troubleshooting"
+  },
+  {
+    "term": "Insulation Resistance Test",
+    "definition": "High-voltage test (typically 500V-1000V) to verify insulation integrity between conductors and between conductors and ground. Detects insulation breakdown that standard continuity tests cannot find.",
+    "analogy": "Stress-testing the insulation to make sure it can handle high voltage without leaking.",
+    "unit": "Testing",
+    "tags": "testing|insulation|quality"
+  },
+  {
+    "term": "AC 43.13-1B",
+    "definition": "FAA Advisory Circular providing acceptable methods, techniques, and practices for aircraft inspection, repair, and alteration. Chapter 11 covers wiring practices and is the bible for aircraft wire harness work.",
+    "analogy": "The official rulebook for how to do aircraft wiring correctly.",
+    "unit": "Standards",
+    "tags": "standards|faa|regulations"
+  },
+  {
+    "term": "IPC/WHMA-A-620",
+    "definition": "Industry standard for requirements and acceptance criteria for cable and wire harness assemblies. Defines workmanship requirements and inspection criteria for commercial and aerospace harnesses.",
+    "analogy": "The quality standard that defines what good harness work looks like.",
+    "unit": "Standards",
+    "tags": "standards|quality|industry"
   },
   {
     "term": "ESD Precautions",
-    "definition": "Safety procedures, such as using grounding straps and anti-static mats, designed to safely discharge built-up static electricity before handling sensitive electronics [2, 89].",
-    "analogy": "Grounding oneself to prevent static discharge from destroying microprocessors [89, 90].",
-    "unit": "DC 101 (Safety)",
-    "tags": "safety|maintenance"
+    "definition": "Electrostatic discharge protection measures including grounded wrist straps, anti-static mats, and proper grounding when handling sensitive avionics components. Prevents invisible damage to semiconductors.",
+    "analogy": "Wearing a grounding strap like a safety harness - protects sensitive electronics from static zaps.",
+    "unit": "Safety",
+    "tags": "safety|esd|protection"
+  },
+  {
+    "term": "FOD Prevention",
+    "definition": "Foreign Object Debris prevention - ensuring no wire clippings, contact pins, tools, or other objects are left in aircraft during maintenance. Critical for safety and system reliability.",
+    "analogy": "Cleaning up completely - no leftover bits that could cause problems later.",
+    "unit": "Safety",
+    "tags": "safety|fod|best_practices"
+  },
+  {
+    "term": "Heat Shrink Tubing",
+    "definition": "Polymer tubing that shrinks to a smaller diameter when heated, providing insulation, strain relief, and environmental protection. Available in various shrink ratios and materials. Essential for splice insulation and wire bundling.",
+    "analogy": "Plastic tubing that shrinks tight like shrink wrap when you heat it.",
+    "unit": "Materials",
+    "tags": "materials|insulation|protection"
+  },
+  {
+    "term": "Wire Gauge Selection",
+    "definition": "Choosing the correct wire size based on current carrying requirements, voltage drop limitations, mechanical strength, and temperature derating. Undersized wire causes voltage drop and overheating; oversized wire adds weight and cost.",
+    "analogy": "Picking the right size pipe for the amount of water flow you need.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|design|engineering"
+  },
+  {
+    "term": "Voltage Drop",
+    "definition": "The reduction in voltage that occurs along a wire due to resistance. Excessive voltage drop (typically >1V or 2%) causes equipment malfunction. Minimized by proper wire gauge selection and connection quality.",
+    "analogy": "Pressure loss in a long hose - the farther you go, the more you lose.",
+    "unit": "Electrical Theory",
+    "tags": "electrical|theory|troubleshooting"
+  },
+  {
+    "term": "Coaxial Cable",
+    "definition": "A cable with a center conductor, insulating dielectric, outer shield conductor, and protective jacket. Used for radio frequency (RF) signals in avionics like GPS, VHF comm, and transponder antennas. Shielding prevents interference.",
+    "analogy": "A wire inside a wire inside a jacket - keeps RF signals pure and protected.",
+    "unit": "Specialized Cable",
+    "tags": "cable|rf|shielding"
+  },
+  {
+    "term": "BNC Connector",
+    "definition": "Bayonet Neill-Concelman connector - a quick-connect RF connector with a push-and-twist locking mechanism. Common impedance is 50 ohms. Widely used in test equipment and some avionics installations.",
+    "analogy": "The twist-lock RF connector that clicks into place with a quarter turn.",
+    "unit": "Connectors",
+    "tags": "connectors|rf|types"
+  },
+  {
+    "term": "Shield Termination",
+    "definition": "The method of connecting the shield of a shielded cable to ground at one or both ends. Proper termination is critical for EMI protection. Typically uses 360° circumferential connection through backshell or drain wire.",
+    "analogy": "Grounding the protective mesh around sensitive wires to drain away interference.",
+    "unit": "Shielding",
+    "tags": "shielding|grounding|emi"
+  },
+  {
+    "term": "Wire Derating",
+    "definition": "Reduction in the current-carrying capacity of wire due to elevated ambient temperature, bundling with other wires, or installation in confined spaces. Must be calculated to prevent overheating.",
+    "analogy": "Like working in hot weather - you can't do as much before overheating.",
+    "unit": "Wire Basics",
+    "tags": "wire_basics|engineering|safety"
+  },
+  {
+    "term": "Ground Wire",
+    "definition": "A conductor connecting electrical equipment to the aircraft structure (earth ground) to provide a return path for current and safety path for fault currents. Must have low resistance and secure mechanical connection.",
+    "analogy": "The safety path for electricity to return home safely.",
+    "unit": "Electrical Theory",
+    "tags": "electrical|grounding|safety"
+  },
+  {
+    "term": "Wire Routing",
+    "definition": "The planned path that wires and harnesses take through the aircraft. Must avoid hot areas, moving parts, sharp edges, and allow for proper support spacing. Should follow existing wire bundles when possible.",
+    "analogy": "Planning the best route for wires through the aircraft, like planning a road trip.",
+    "unit": "Installation",
+    "tags": "installation|routing|planning"
   }
   ];
 
