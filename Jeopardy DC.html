@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Wire Harness Jeopardy - Player vs AI</title>
 <style>
   :root {
     --bg: #111827;
@@ -575,119 +576,119 @@
 const QUESTION_BANK = {
   // ==================== ROUND 1: JEOPARDY ====================
 
-  "DC Concepts": [
+  "Wire Basics": [
     {
-      id: "dc-001",
+      id: "wire-001",
       difficulty: 1,
       pointValue: 100,
       timeLimit: 10,
-      question: "This is the unit of measurement for electrical 'pressure' or potential difference.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
-      correctIndex: 2,
-      explanation: "Voltage (Volts) is the electrical pressure that causes current to flow.",
-      reference: "Fundamentals of DC"
+      question: "In AWG (American Wire Gauge), a higher number means the wire is:",
+      answers: ["Thicker", "Thinner", "Longer", "Shorter"],
+      correctIndex: 1,
+      explanation: "AWG numbers are inversely related to wire diameter - higher numbers mean thinner wire.",
+      reference: "Wire Gauge Standards"
     },
     {
-      id: "dc-002",
+      id: "wire-002",
       difficulty: 2,
       pointValue: 200,
       timeLimit: 12,
-      question: "This is the unit of measurement for the rate of electron flow in a circuit.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
-      correctIndex: 0,
-      explanation: "Current (Amperes) is the measure of how many electrons flow past a point per second.",
-      reference: "Fundamentals of DC"
+      question: "This type of wire insulation is rated for 200°C and commonly used in aircraft:",
+      answers: ["PVC", "PTFE (Teflon)", "Rubber", "Vinyl"],
+      correctIndex: 1,
+      explanation: "PTFE (Polytetrafluoroethylene) or Teflon insulation provides excellent high-temperature and chemical resistance.",
+      reference: "Wire Insulation"
     },
     {
-      id: "dc-003",
+      id: "wire-003",
       difficulty: 3,
       pointValue: 300,
       timeLimit: 14,
-      question: "A material, like rubber or plastic, that strongly opposes the flow of current is called:",
-      answers: ["A conductor", "A semiconductor", "A resistor", "An insulator"],
-      correctIndex: 3,
-      explanation: "Insulators have very high resistance and are used to prevent current from flowing where it is not wanted.",
-      reference: "Conductors vs. Insulators"
+      question: "Stranded wire is preferred over solid wire in aircraft because it:",
+      answers: ["Is cheaper", "Conducts better", "Resists vibration fatigue", "Weighs less"],
+      correctIndex: 2,
+      explanation: "Stranded wire is more flexible and resistant to breaking from vibration, making it ideal for aircraft applications.",
+      reference: "Wire Construction"
     },
     {
-      id: "dc-004",
+      id: "wire-004",
       difficulty: 3,
       pointValue: 400,
       timeLimit: 15,
-      question: "This is the unit of measurement for the opposition to current flow.",
-      answers: ["Amperes (Amps)", "Ohms (Ω)", "Volts (V)", "Watts (W)"],
+      question: "The purpose of tinning copper wire is to:",
+      answers: ["Make it thicker", "Improve corrosion resistance", "Increase voltage rating", "Change wire color"],
       correctIndex: 1,
-      explanation: "Resistance (Ohms) is the property that opposes the flow of current.",
-      reference: "Fundamentals of DC"
+      explanation: "Tinning (coating with solder) protects copper from corrosion and makes soldering easier.",
+      reference: "Wire Treatment"
     },
     {
-      id: "dc-005",
+      id: "wire-005",
       difficulty: 4,
       pointValue: 500,
       timeLimit: 18,
-      question: "In 'Direct Current' (DC), the electrons flow in:",
-      answers: ["Two directions, alternating", "One direction only", "A circular, spinning pattern", "High-frequency pulses"],
-      correctIndex: 1,
-      explanation: "Direct Current (DC) is defined by its unidirectional flow, typically from negative to positive.",
-      reference: "AC vs. DC"
+      question: "Wire derating means:",
+      answers: ["Reducing voltage", "Increasing resistance", "Reducing current capacity due to temperature/bundling", "Downgrading wire quality"],
+      correctIndex: 2,
+      explanation: "Derating is the reduction in current-carrying capacity due to elevated temperature, bundling, or confined spaces.",
+      reference: "Wire Engineering"
     }
   ],
 
-  "Ohm's Law": [
+  "Crimping": [
     {
-      id: "ohm-001",
+      id: "crimp-001",
       difficulty: 1,
       pointValue: 100,
       timeLimit: 10,
-      question: "What is the correct formula for Ohm's Law?",
-      answers: ["V = I x R", "R = V x I", "I = V x R", "P = V x I"],
-      correctIndex: 0,
-      explanation: "Ohm's Law states Voltage (V) equals Current (I) multiplied by Resistance (R).",
-      reference: "Ohm's Law Formula"
+      question: "The two parts of a crimp terminal are the conductor barrel and the:",
+      answers: ["Pin barrel", "Insulation barrel", "Wire barrel", "Contact barrel"],
+      correctIndex: 1,
+      explanation: "The insulation barrel provides strain relief by crimping onto the insulated portion of the wire.",
+      reference: "Crimp Terminal Anatomy"
     },
     {
-      id: "ohm-002",
+      id: "crimp-002",
       difficulty: 2,
       pointValue: 200,
       timeLimit: 15,
-      question: "A 10-ohm resistor has 2 amps of current flowing through it. What is the voltage drop across it?",
-      answers: ["5 Volts", "12 Volts", "0.2 Volts", "20 Volts"],
-      correctIndex: 3,
-      explanation: "Using V = I x R: 2 Amps * 10 Ohms = 20 Volts.",
-      reference: "Ohm's Law Calculation"
+      question: "What tool ensures consistent crimp quality by not releasing until the crimp cycle is complete?",
+      answers: ["Pliers", "Ratcheting crimper", "Wire stripper", "Manual crimper"],
+      correctIndex: 1,
+      explanation: "A ratcheting crimper forces completion of the crimp cycle, ensuring consistent quality every time.",
+      reference: "Crimping Tools"
     },
     {
-      id: "ohm-003",
+      id: "crimp-003",
       difficulty: 3,
       pointValue: 300,
       timeLimit: 15,
-      question: "A 28-volt circuit has a resistance of 7 ohms. How much current is flowing?",
-      answers: ["4 Amps", "196 Amps", "21 Amps", "0.25 Amps"],
-      correctIndex: 0,
-      explanation: "Using I = V / R: 28 Volts / 7 Ohms = 4 Amps.",
-      reference: "Ohm's Law Calculation"
+      question: "In a proper pull test, what should happen?",
+      answers: ["Crimp pulls off easily", "Wire breaks before crimp", "Terminal cracks", "Insulation tears"],
+      correctIndex: 1,
+      explanation: "A proper crimp should be stronger than the wire itself - the wire should break before the crimp fails.",
+      reference: "Crimp Testing"
     },
     {
-      id: "ohm-004",
+      id: "crimp-004",
       difficulty: 3,
       pointValue: 400,
       timeLimit: 15,
-      question: "A lamp connected to a 14-volt source draws 2 amps. What is the lamp's resistance?",
-      answers: ["28 Ohms", "12 Ohms", "7 Ohms", "16 Ohms"],
-      correctIndex: 2,
-      explanation: "Using R = V / I: 14 Volts / 2 Amps = 7 Ohms.",
-      reference: "Ohm's Law Calculation"
+      question: "What indicates an over-crimped terminal?",
+      answers: ["Loose connection", "Broken wire strands or damaged barrel", "High resistance", "Poor color"],
+      correctIndex: 1,
+      explanation: "Over-crimping can break conductor strands or crack the terminal barrel, weakening the connection.",
+      reference: "Crimp Defects"
     },
     {
-      id: "ohm-005",
+      id: "crimp-005",
       difficulty: 4,
       pointValue: 500,
       timeLimit: 18,
-      question: "In a circuit with constant voltage, if you double the resistance, what happens to the current?",
-      answers: ["It doubles", "It stays the same", "It is cut in half", "It becomes zero"],
-      correctIndex: 2,
-      explanation: "Current and resistance are inversely proportional (I = V/R). If R doubles, I is halved.",
-      reference: "Ohm's Law Relationships"
+      question: "Why is crimping preferred over soldering in aircraft wiring?",
+      answers: ["It's faster", "Better vibration resistance", "Cheaper tools", "Easier to learn"],
+      correctIndex: 1,
+      explanation: "Crimped connections resist vibration better than solder joints and don't require heat near sensitive components.",
+      reference: "Aircraft Wiring Standards"
     }
   ],
 
